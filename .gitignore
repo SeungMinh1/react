@@ -1,4 +1,4 @@
-/node_modules/
+node_modules/
 node-project/node_modules/.package-lock.json
 node-project/node_modules/.bin/mime
 node-project/node_modules/.bin/mime.cmd

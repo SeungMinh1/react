@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>customer</h1>
+    <div id="list">
+        <div>
+            <table id="tbl" border="1"></table>
+        </div>
+
+    </div>
+
+    <script>
+        fetch("http://localhost:3000/customer")
+        .then(result => result.json())
+        .then(result => 
+            {
+                // result.forEach(element => {
+                //         let list = document.getElementById('list');
+                //         let div = document.createElement('div');
+                //         let span = document.createElement('span')
+                //         let span2 = document.createElement('span')
+                //         let span3 = document.createElement('span')
+                //         span.innerText = element.id;
+                //         span2.innerText = ' | ' +element.name;
+                //         span3.innerText = ' | ' +element.phone;
+                //         div.appendChild(span);
+                //         div.appendChild(span2);
+                //         div.appendChild(span3);
+                //         list.appendChild(div);  
+                // });
+                
+                //list.innerHTML = `<div><span>${element.name}</sapn><span>${element.email}</sapn></div>`;
+                for(element of result){
+                    const newtag = `<div><span>${element.name}</sapn><span>${element.email}</sapn></div>`;
+                    list.insertAdjacentHTML("beforeend", newtag);
+                    
+                    let row = tbl.insertRow();
+                    for(field in element){
+                        let td1 = row.insertCell();
+                        td1.innerText = element[field];
+                    }
+                    /*
+                    let fieldList = ['id', 'name', 'phone']
+                    let row = tbl.insertRow();
+                    for(field of fieldList){
+                        let td1 = row.insertCell();
+                        td1.innerText = element[field];
+                    }
+                    */
+
+                }
+            }
+        )
+    </script>
+</body>
+</html>
+
+<!--beforebegin-->
+<!--afterbegin-->
+<!--beforeend-->
