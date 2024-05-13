@@ -145,13 +145,7 @@ input {
 <script>
 
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
@@ -185,12 +179,23 @@ function todoList(){
   .then(result => result.json())
   .then(result =>{
     for(element of result){
-      const newtag = `<li data-no="${element.no}">${element.title}</li>`;
+      const newtag = `<li data-no="${element.no} ">${element.title}</li>`;
       myUL.insertAdjacentHTML("beforeend", newtag);
       // Create a "close" button and append it to each list item
 
 
-      var myNodelist = document.getElementsByTagName("LI");
+      let myNodelist = document.getElementsByTagName("LI");
+      
+      /*
+      for (i = 0; i < myNodelist.length; i++) { //li[class='checked']
+        myNodelist[i].onclick = function() {
+        console.log( myNodelist[i]);
+        //let div = myNodelist;
+        //todoUpdate( myNodelist[i])
+          
+      }}
+      */
+
       var i;
       for (i = 0; i < myNodelist.length; i++) {
         var span = document.createElement("SPAN");
@@ -214,6 +219,26 @@ function todoList(){
   })
 }
 todoList();
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+    let divno = ev.target.dataset.no
+   
+    if(ev.target.className == 'checked'){
+      let comp = 1
+      todoUpdate(divno, comp);
+    }else{
+      let comp = 0
+      todoUpdate(divno, comp);
+    }
+
+    
+  }
+}, false);
+
 
 function todoInsert(){
   let title = document.getElementById('myInput').value;
@@ -239,11 +264,14 @@ function todoDelete(div){
 
 }
 
-function todoUpdate(){
-  fetch("http://localhost:3000/todo",{
+function todoUpdate(divno, comp){
+  let no = divno;
+ 
+  let complete = comp;
+  fetch(`http://localhost:3000/todo/${no}/${complete}`,{
     method :'put',
     headers: { 'Content-Type': 'application/json' },
-    body : JSON.stringify({no:no})
+    body : JSON.stringify({no:no, complete:complete})
   })
   .then(result => result.json())
   .then(result => console.log(result))
