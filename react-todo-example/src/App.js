@@ -1,5 +1,10 @@
 
-function Todo() {
+function Todo({data}) {
+
+  data.forEach(element => {
+    console.log(element);
+    
+  });
   return (
     <li className="todo stack-small">
       <div className="c-cb">
@@ -55,7 +60,7 @@ function App(props) {
     { id: "todo-1", name: "Sleep", completed: false },
     { id: "todo-2", name: "Repeat", completed: false },
   ];
-  const tasklist = DATA
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
@@ -70,9 +75,8 @@ function App(props) {
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        <Todo />
-        <Todo />
-        <Todo />
+        <Todo data={DATA}/>
+   
       </ul>
     </div>
   );
