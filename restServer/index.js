@@ -6,7 +6,7 @@ const todoRoute = require("./routes/todo");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express(); // createServer 서버만듬
-const port = 3000;
+const port = 8000; //30000
 
 
 app.use(cors());
