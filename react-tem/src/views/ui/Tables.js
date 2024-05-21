@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const Tables = () => {
   let [liquors, setLiquors] = useState([]);
   let [loading, setloading] = useState(false);
-  let url = 'http://localhost:8000/liquor/'
+  let url = 'http://192.168.0.14:8000/liquor/'
   const navigation = useNavigate();
 
   const callLiquor = async () => {

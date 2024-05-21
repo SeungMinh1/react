@@ -11,7 +11,7 @@ const Grid = () => {
   let [loading, setloading] = useState(false);
 
   const { no } = useParams();
-  let url = `http://localhost:8000/liquor/${no}`
+  let url = `http://192.168.0.14:8000/liquor/${no}`
   const navigation = useNavigate();
   const callLiquor = async () => {
     setloading(true);
@@ -19,12 +19,12 @@ const Grid = () => {
     setloading(false);
     setLiquor(result.data[0]);
   }
-  useEffect(() => { callLiquor(); }, [])
+  useEffect(() => { callLiquor(); }, [no])
 
   if (loading) return <div><h2>로딩중입니다...</h2></div>
 
   async function deleteThis(no) {
-    const d = await axios.delete(`http://localhost:8000/liquor/${no}`);
+    const d = await axios.delete(`http://192.168.0.14:8000/liquor/${no}`);
     alert("삭제되었습니다.");
     navigation("/table");
   }

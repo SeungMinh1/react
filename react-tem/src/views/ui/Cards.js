@@ -1,26 +1,14 @@
-import {
-  Card,
-  Row,
-  Col,
-  CardTitle,
-  CardBody,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-} from "reactstrap";
+import {Card, Row,Col,CardTitle,CardBody,Button,Form,FormGroup,Label,Input,FormText,} from "reactstrap";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
-const Cards = () => {
+const Cards = () => {  //수정페이지
   let [liquor, setLiquor] = useState([]);
   let [loading, setloading] = useState(false);
   const navigation = useNavigate();
   const {no} = useParams();
-  let url = `http://localhost:8000/liquor/${no}`
+  let url = `http://192.168.0.14:8000/liquor/${no}`
 
   const callLiquor = async ()=>{
       const result = await axios.get(url);
@@ -31,20 +19,18 @@ const Cards = () => {
 
   function doUpdate(){
       const change = {name:liquor.name, vol:liquor.vol, origin:liquor.origin, ABV:liquor.ABV, category:liquor.category,description:liquor.description}
-      axios.put(`http://localhost:8000/liquor/${liquor.no}`, change);
+      axios.put(`http://192.168.0.14:8000/liquor/${liquor.no}`, change);
       alert("수정되었습니다.");
       navigation(`/grid/${liquor.no}`);
   }
   return (
     <Row>
       <Col>
-        {/* --------------------------------------------------------------------------------*/}
-        {/* Card-1*/}
-        {/* --------------------------------------------------------------------------------*/}
+
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
             <i className="bi bi-bell me-2"> </i>
-            Liquor Insert
+            Liquor Update
           </CardTitle>
           <CardBody>
             <Form>

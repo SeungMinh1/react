@@ -8,25 +8,11 @@ const navigation = [
     href: "/starter",
     icon: "bi bi-speedometer2",
   },
-  {
-    title: "Alert",
-    href: "/alerts",
-    icon: "bi bi-bell",
-  },
-  {
-    title: "Badges",
-    href: "/badges",
-    icon: "bi bi-patch-check",
-  },
-  {
-    title: "Buttons",
-    href: "/buttons",
-    icon: "bi bi-hdd-stack",
-  },
+ 
 
  
   {
-    title: "Table",
+    title: "주류 리스트",
     href: "/table",
     icon: "bi bi-layout-split",
   },
@@ -35,16 +21,7 @@ const navigation = [
     href: "/forms",
     icon: "bi bi-textarea-resize",
   },
-  {
-    title: "Breadcrumbs",
-    href: "/breadcrumbs",
-    icon: "bi bi-link",
-  },
-  {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
-  },
+ 
 ];
 
 const Sidebar = () => {

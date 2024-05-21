@@ -1,24 +1,12 @@
-import {
-  Card,
-  Row,
-  Col,
-  CardTitle,
-  CardBody,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-} from "reactstrap";
-import { useState, useEffect } from 'react';
+import { Card,Row,Col,CardTitle,CardBody,Form,FormGroup,Label,Input,} from "reactstrap";
+import { useState, useEffect } from 'react';  
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom'
 
-const Forms = () => {
+const Forms = () => {  //등록 페이지
   let [liquors, setLiquors] = useState([]);
   let [loading, setloading] = useState(false);
-  let url = 'http://localhost:8000/liquor/'
+  let url = 'http://192.168.0.14:8000/liquor/'
   const navigation = useNavigate();
 
   const AddLiquor = () => {
@@ -30,9 +18,7 @@ const Forms = () => {
   return (
     <Row>
       <Col>
-        {/* --------------------------------------------------------------------------------*/}
-        {/* Card-1*/}
-        {/* --------------------------------------------------------------------------------*/}
+
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
             <i className="bi bi-bell me-2"> </i>

@@ -5,6 +5,7 @@ const mysql = require("../mysql");
 const sql = {
     reviewList : "select * from review",
     reviewInfo : "select * from review where liquorNo=?", //해당 술에대한 리뷰조회
+    reviewOne : "select * from review where reviewNo=?", // 리뷰하나조회
     reviewinsert : "insert into review set ?",
     reviewUpdate : "update review set ? where reviewNo=?",
     reviewDelete : "delete from review where reviewNo=?",
@@ -19,6 +20,12 @@ router.get("/", async (req, res)=>{
 router.get("/:id", async (req, res)=>{
     let id = req.params.id
     let result = await mysql.query(sql.reviewInfo, id);
+    res.send(result);
+})
+//리뷰 하나 조회
+router.get("/select/:no", async (req, res)=>{
+    let no = req.params.no
+    let result = await mysql.query(sql.reviewOne, no);
     res.send(result);
 })
 //등록

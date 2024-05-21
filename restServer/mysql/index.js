@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 
 // mysql 접속 정보
 const conn = {
-  host: "localhost", //192.168.56.1
+  host: "192.168.0.14", //192.168.56.1
   port: "3306",
   user: "hr",
   password: "hr",
